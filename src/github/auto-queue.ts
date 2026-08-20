@@ -1,4 +1,5 @@
 import type { IConstruct } from "constructs";
+import { GitHubActions } from "./actions.const";
 import { GitHub } from "./github";
 import type { GithubCredentials } from "./github-credentials";
 import * as workflows from "./workflows-model";
@@ -162,7 +163,7 @@ export class AutoQueue extends Component {
       steps: [
         ...credentials.setupSteps,
         {
-          uses: "peter-evans/enable-pull-request-automerge@v3",
+          uses: GitHubActions.PETER_EVANS_ENABLE_PULL_REQUEST_AUTOMERGE,
           with: {
             token: credentials.tokenRef,
             "pull-request-number": "${{ github.event.number }}",
